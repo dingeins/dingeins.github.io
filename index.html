@@ -1,0 +1,49 @@
+---
+layout: default
+---
+<style type="text/css">
+.sidebar{
+  position:fixed;
+  top:80px;
+  left:20px;
+}
+body{
+  position: relative;
+}
+.nav>li>a {
+  position: relative;
+  display: block;
+  padding: 0px 15px;
+}
+</style>
+
+<div class="home">
+
+  <div class="row">
+    <div id="nav-sidebar" class="col-md-2 sidebar">
+      <h1 class="page-heading">目录</h1>
+
+      <ul class="nav nav-pills nav-stacked">
+        {% for post in site.posts %}
+        <li class="nav-item">
+          <a href="#{{ post.id | remove_first:'/'}}">{{ post.title }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="col-md-12">
+      <ul class="post-list">
+        {% for post in site.posts %}
+          <li>
+            <h2 id="{{ post.id | remove_first:'/'}}">{{ post.title }}</h2>
+            <article class="post-content">
+              {{ post.content }}
+            </article>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+</div>
